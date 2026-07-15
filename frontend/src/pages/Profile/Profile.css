@@ -1,0 +1,363 @@
+/* Base Page Setup */
+.profile-page {
+  min-height: 100vh;
+  background-image:url('assets/quizbackground.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 120px 20px 80px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #e5e5e7;
+}
+
+.profile-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Elegant Containers */
+.profile-container, .favorites-container {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profile-container {
+  max-width: 550px;
+}
+
+.profile-container h2, .favorites-container h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Subtle red underline for titles */
+.profile-container h2::after, .favorites-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: rgb(115, 26, 26);
+}
+
+.favorites-container h2::after {
+  left: 0;
+  transform: none;
+}
+
+.favorites-container h2 {
+  display: block;
+  text-align: left;
+}
+
+/* Avatar Styles */
+.profile-avatar {
+  width: 130px;
+  height: 130px;
+  background: #111;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #fff;
+  margin: 0 auto 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+.profile-avatar-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 25px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Edit Mode Avatar */
+.avatar-upload {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 35px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.avatar-upload .profile-avatar,
+.avatar-upload .profile-avatar-img {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-upload-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  opacity: 0;
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
+}
+
+.avatar-upload:hover .avatar-upload-overlay {
+  opacity: 1;
+}
+
+/* Profile Details */
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-username {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.profile-email {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0 0 15px 0;
+}
+
+.profile-role {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgb(160, 50, 50);
+  margin: 0 0 25px 0;
+}
+
+.profile-bio {
+  margin: 10px 0 35px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.profile-bio p {
+  color: #aaa;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Elegant Edit Form */
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  color: #888;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 0;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-bottom-color: rgb(115, 26, 26);
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Minimalist Buttons */
+button {
+  font-family: inherit;
+}
+
+.edit-btn, .save-btn, .cancel-btn, .logout-btn, .login-btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.edit-btn, .save-btn, .login-btn {
+  background: rgb(115, 26, 26);
+  color: #fff;
+  border: 1px solid rgb(115, 26, 26);
+}
+
+.edit-btn:hover, .save-btn:hover, .login-btn:hover {
+  background: transparent;
+  color: rgb(115, 26, 26);
+}
+
+.cancel-btn, .logout-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #aaa;
+}
+
+.cancel-btn:hover, .logout-btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Favorites Section */
+.favorites-container {
+  padding: 60px;
+}
+
+.no-favorites {
+  color: #777;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.favorite-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.4s ease;
+}
+
+.favorite-card:hover {
+  transform: translateY(-8px);
+}
+
+.favorite-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.4s ease;
+}
+
+.favorite-card:hover img {
+  box-shadow: 0 15px 30px rgba(115, 26, 26, 0.3);
+}
+
+.favorite-card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.favorite-card-info h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: left;
+}
+
+.remove-fav-btn {
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.remove-fav-btn:hover {
+  color: rgb(115, 26, 26);
+}
+
+@media (max-width: 768px) {
+  .profile-actions, .form-actions {
+    flex-direction: column;
+  }
+  .favorites-container {
+    padding: 40px 20px;
+  }
+}

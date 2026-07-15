@@ -1,0 +1,88 @@
+.login{
+    height: 100vh;
+    padding:20px 8%;
+    background-image: url(/src/assets/login.gif);
+    background-size: cover;        /* 🔥 this is the key */   /* center the image */
+    background-repeat: no-repeat;
+}
+.login-logo{
+    width: 70px;
+    
+}
+.login-form{
+    width: 200px;
+    max-width: 450px;
+    border-radius: 12px;
+    padding:50px;
+    margin: auto;
+    margin-top: 20px;
+    background: linear-gradient(
+  to bottom,
+  rgba(0,0,0,0.9),
+  rgba(0,0,0,0.3),
+  rgba(0,0,0,0.3)
+);
+}
+.login-form h1{
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 28px;
+}
+.login-form input{
+    height:20px;
+    background:#333;
+    color:white;
+    margin:12px 0;
+    border:0;
+    outline: 0;
+    border-radius:4px;
+    padding:16px 20px;
+    font-size:16;
+    font-weight: 500;
+
+
+}
+.login-form input ::placeholder{
+    font-size: 16px;
+    font-weight:500;
+
+}
+.login-form button{
+    width:100%;
+    border:0;
+    outline:0;
+    padding:16px;
+    background:#e50914;
+    color:white;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight:500;
+    margin-top: 20px;;
+}
+.form-help{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:#b3b3b3;
+    font-size: 13px;
+}
+.remember{
+    display: flex;
+    align-items: center;
+    gap:5px
+}
+.remember input{
+    width:18px;
+    height:18px;
+}
+.form-switch{
+    margin-top:20px;
+    color: #737373;
+}
+
+.form-switch span{
+    margin-left: 6px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}

@@ -1,0 +1,29 @@
+$kind: http-request
+name: http://localhost:3000/auth/login
+description: admin login
+url: http://localhost:3000/auth/login
+method: POST
+body:
+  type: json
+  content: "{ \r
+
+    \    \r
+
+    \    \r
+
+    \    \"email\":\"sana@gmail.com\",\r
+
+    \    \"password\":\"Sana1245\"\r
+
+    \    \r
+
+    \  \r
+
+    \r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjFmZDIxZGQ3ZTI2OWY5YjI3YTdiMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MzI3MjUyNiwiZXhwIjoxNzczMzU4OTI2fQ.1dwawJaEfXhoUfcWoUQgV8Iqniei4fdNYhqCq38NZAs
+order: 1773272603839

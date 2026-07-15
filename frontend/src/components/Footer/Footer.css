@@ -1,0 +1,123 @@
+.footer {
+    background-color: #000; /* PURE BLACK */
+    color: #cbd5e1;
+    padding: 50px 80px;
+  }
+  
+  .footer-container {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+  }
+  
+  /* LEFT SIDE */
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  
+  .footer-copy {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  
+  
+  /* CENTER THE SECTIONS */
+  .footer-sections {
+    position: absolute;
+    left: 60%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 90px;
+  }
+  
+  .footer-section h4 {
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; /* CENTER TEXT */
+  }
+  
+  .footer-section li {
+    margin-bottom: 8px;
+    cursor: pointer;
+    opacity: 0.85;
+  }
+  
+  .footer-section li:hover {
+    opacity: 1;
+  } 
+  .line{
+  border: none;
+  height: 2.6px;        /* thickness */
+  background: linear-gradient(
+    to right,
+    transparent,
+    red,
+    orange,
+    red,
+    transparent
+  );
+  width: 60%;         /* length */
+  margin: 2rem auto; 
+  }
+  
+  .footer-gif img {
+    height: 250px;
+    width: 450px;
+    object-fit: cover;
+    opacity: 0.9;
+  
+    /* Gradient fade */
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0)
+    );
+  }
+  .footer-brand-edge {
+    position: absolute;
+    right: 790px; /* move closer/farther from gif */
+    bottom: 150px;
+  
+    z-index: 3;
+    max-width: 280px;
+  }
+  .footer-brand-edge h2{
+    color: #800020;
+  font-size: 2rem;
+  font-weight: bold;
+
+  }
+  .footer-brand-edge p{
+    margin-top: 15px;
+    margin-left: 30px;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 18px;
+    margin-top: 200px;
+    font-size: 18px;
+    color: #800020;
+    
+  }
+  
+  .footer-socials svg {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .footer-socials svg:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  

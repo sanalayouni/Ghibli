@@ -1,0 +1,18 @@
+.movies-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.movies-container {
+  padding-top: 100px;
+  flex: 1;
+  width: 100%;
+}
+
+/* Override TitleCards horizontal scroll for this page to make a grid */
+.movies-container .card-list {
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  justify-content: center;
+}
