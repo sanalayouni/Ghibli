@@ -6,6 +6,8 @@ import MovieDetails from './pages/MovieDetails/MovieDetails'
 import Movies from './pages/Movies/Movies'
 import TopRated from './pages/TopRated/TopRated'
 import Profile from './pages/Profile/Profile'
+import GuessMovie from './pages/GuessMovie/GuessMovie'
+
 const App = () => {
   return (
     <div className='home'>
@@ -14,6 +16,7 @@ const App = () => {
         <Route path='/home' element={<Home />} />
         <Route path='/movies' element={<Movies />} />
         <Route path='/top-rated' element={<TopRated />} />
+        <Route path='/guess' element={<GuessMovie />} />
         <Route path='/profile' element={<Profile />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
       </Routes>

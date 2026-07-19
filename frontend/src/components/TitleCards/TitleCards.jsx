@@ -4,6 +4,39 @@ import './TitleCards.css'
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 const IMG_BASE = 'https://image.tmdb.org/t/p/w500'
+const BASE_URL = 'https://api.themoviedb.org/3'
+
+const resolveMovieDetails = async movie => {
+  const title = movie.title?.trim()
+
+  if (!title) {
+    throw new Error('Movie title is missing')
+  }
+
+  if (movie.tmdbId) {
+    const res = await fetch(`${BASE_URL}/movie/${movie.tmdbId}?api_key=${API_KEY}`)
+    return res.json()
+  }
+
+  const searchRes = await fetch(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(title)}`
+  )
+  const searchData = await searchRes.json()
+
+  const match =
+    searchData.results?.find(
+      result =>
+        result.title?.toLowerCase() === title.toLowerCase() ||
+        result.original_title?.toLowerCase() === title.toLowerCase()
+    ) || searchData.results?.[0]
+
+  if (!match) {
+    throw new Error(`No TMDB match found for ${title}`)
+  }
+
+  const detailsRes = await fetch(`${BASE_URL}/movie/${match.id}?api_key=${API_KEY}`)
+  return detailsRes.json()
+}
 
 const TitleCards = ({ title, movieList }) => {
   const [movies, setMovies] = useState([])
@@ -11,15 +44,12 @@ const TitleCards = ({ title, movieList }) => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const results = await Promise.all(
-        movieList.map(async movie => {
-          const res = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${API_KEY}`
-          )
-          return res.json()
-        })
-      )
-      setMovies(results)
+      try {
+        const results = await Promise.all(movieList.map(resolveMovieDetails))
+        setMovies(results)
+      } catch (err) {
+        console.error('Failed to load movies', err)
+      }
     }
 
     fetchMovies()
