@@ -5,8 +5,8 @@ import TitleCards from '../../components/TitleCards/TitleCards'
 import Footer from '../../components/Footer/Footer'
 import FeaturedMovie from '../../components/FeaturedMovie/FeaturedMovie'
 import { POPULAR_GHIBLI, CLASSIC_GHIBLI, KIDS_GHIBLI, FEATURED_GHIBLI } from '../../constants/movies'
-import hero from '../../assets/back.jpg'
 import Thanks from '../../components/thanks/thanks'
+import Welcome from '../../components/Welcome/Welcome'
 
 const Home = () => {
   return (
@@ -18,22 +18,12 @@ const Home = () => {
           <FeaturedMovie key={movie.id} movie={movie} />
         ))}
       </div>
-
-      <section className="welcome-section">
-        <div className="welcome-card">
-          <img src={hero} alt="Ghibli atmosphere" className="welcome-image" />
-          <div className="welcome-overlay" />
-          <div className="welcome-content">
-            <p className="welcome-label">Welcome to Ghibli Mori</p>
-            <h2>A home for fans and lovers of Studio Ghibli</h2>
-            <p>
-              Discover enchanting stories, iconic characters, and the magical world of animation that continues to inspire generations.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      
       <Thanks/>
+
+      <Welcome />
+
+      
 
       <div className="home-content">
         <TitleCards />
