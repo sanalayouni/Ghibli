@@ -17,17 +17,36 @@ const Thanks = () => {
           </p>
         </div>
         <div className="thanks-portrait">
-          <img src={hayaoImage} alt="Hayao Miyazaki" />
-          <img src={isaoImage} alt="Isao Takahata" />
-          <img src={toshioImage} alt="Toshio Suzuki" />
+         <div className="portrait-item">
+         <img src={hayaoImage} alt="Hayao Miyazaki" />
+        <span>Hayao Miyazaki</span>
         </div>
+
+        <div className="portrait-item">
+        <img src={isaoImage} alt="Isao Takahata" />
+        <span>Isao Takahata</span>
+        </div>
+
+       <div className="portrait-item">
+       <img src={toshioImage} alt="Toshio Suzuki" />
+       <span>Toshio Suzuki</span>
       </div>
-      <div className="legends">
+</div>
+      </div>
+
+      <section className="legends">
         <img src={legendsImage} alt="legends" />
+        <p>
+    In loving memory of <span>Isao Takahata</span> (1935–2018). <br />
+    Thank you for your timeless stories, your kindness, and the emotions
+    you shared with the world. Your legacy will continue to inspire
+    generations. Rest in peace.
+  </p>
+      </section>
+   
+</div>
         
-      </div>
-        
-      </div>
+      
     
   );
 };

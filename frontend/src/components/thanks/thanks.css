@@ -76,19 +76,89 @@
   clip-path: circle(60%);
   
 }
-.legends img {
-  animation: glow 3s ease-in-out infinite;
+.thanks-portrait {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-@keyframes glow {
-  0% {
-    filter: drop-shadow(0 0 5px #d9ff88);
-  }
-  50% {
-    filter: drop-shadow(0 0 20px #d9ff88);
-  }
-  100% {
-    filter: drop-shadow(0 0 5px #d9ff88);
-  }
+.portrait-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portrait-item img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #cfed63;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease;
+}
+
+.portrait-item img:hover {
+  transform: scale(1.05);
+}
+
+.portrait-item span {
+  margin-top: 12px;
+  color: #cfed63; /* Gold */
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
+}
+
+.legends {
+  margin: 80px auto;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.legends img {
+  width: 100%;
+  max-width: 650px;
+  border-radius: 18px;
+  display: block;
+  margin: 0 auto 35px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  image-transform: pixelated;
+    /* Fade the left side */
+  -webkit-mask-image: linear-gradient(to left,
+      transparent 0%,
+      rgba(0,0,0,0.3) 10%,
+      rgba(0,0,0,0.7) 20%,
+      black 35%);
+  mask-image: linear-gradient(to left,
+      transparent 0%,
+      rgba(0,0,0,0.3) 10%,
+      rgba(0,0,0,0.7) 20%,
+      black 35%);
+}
+
+.legends p {
+  color: #d8d8d8;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+.legends span {
+  color: #d4af37;
+  font-weight: 600;
+}
+
+.legends p::before {
+  content: "🕊";
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 18px;
 }
 
