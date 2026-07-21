@@ -67,6 +67,9 @@ const TitleCards = ({ title, movieList }) => {
             onClick={() => navigate(`/movie/${movie.id}`)}
           >
             <img src={`${IMG_BASE}${movie.poster_path}`} alt={movie.title} />
+            <div className="rating-badge">
+      ⭐ {movie.vote_average?.toFixed(1)}
+          </div>
             <h2>{movie.title}</h2>
           </div>
         ))}

@@ -1,12 +1,12 @@
 .title-cards {
     margin-top: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     padding-left: 6%;
 }
 
 .title-cards>h1 {
-    margin-bottom: 8px;
-    font-size: 50px;
+    margin-bottom: 10px;
+    font-size: 45px;
     font-weight: 600;
     color: rgb(115, 26, 26);
     padding: 30px 0 30px 50px;
@@ -15,7 +15,7 @@
 
 .card-list {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     overflow-x: scroll;
 }
 
@@ -36,8 +36,8 @@
 }
 
 .movie-card h2 {
-    margin-top: 10px;
-    font-size: 16px;
+    margin-top: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: white;
     text-align: center;
@@ -48,4 +48,31 @@
 .movie-card img:focus {
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0 15px 25px rgba(155, 211, 255, 0.6);
+}
+.movie-card {
+    position: relative;
+    display: inline-block; /* or block if that's how your cards are laid out */
+}
+
+.movie-card img {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.rating-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    background: rgba(0, 0, 0, 0.8);
+    color: #FFD700;
+
+    padding: 5px 10px;
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    z-index: 10;
 }

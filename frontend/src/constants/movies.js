@@ -12,40 +12,31 @@ export const FEATURED_GHIBLI = [
   }
 ];
 
-export const POPULAR_GHIBLI = [
-  { title: 'Spirited Away' },
-  { title: 'Princess Mononoke' },
-  { title: "Howl's Moving Castle" },
-  { title: 'Spirited Away' },
-  { title: 'Princess Mononoke' },
-  { title: "Howl's Moving Castle" }
-];
-
-export const CLASSIC_GHIBLI = [
-  { title: 'Castle in the Sky' },
-  { title: 'My Neighbor Totoro' },
-  { title: "Kiki's Delivery Service" }
-];
-
-export const KIDS_GHIBLI = [
-  { title: 'Ponyo' }
-];
-
+// All the Movies
 export const ALL_MOVIES = [
-  { title: 'Spirited Away' },
-  { title: 'Princess Mononoke' },
-  { title: "Howl's Moving Castle" },
-  { title: 'Castle in the Sky' },
-  { title: 'My Neighbor Totoro' },
+  { title: "Nausicaä of the Valley of the Wind" },
+  { title: "Castle in the Sky" },
+  { title: "Grave of the Fireflies" },
+  { title: "My Neighbor Totoro" },
   { title: "Kiki's Delivery Service" },
-  { title: 'Ponyo' },
-  { title: 'Grave of the Fireflies' },
-  { title: 'Perfect Blue' },
-  { title: 'The Wind Rises' },
-  { title: 'Whisper of the Heart' },
-  { title: 'The Secret World of Arrietty' },
-  { title: 'From Up on Poppy Hill' },
-  { title: 'The Cat Returns' }
+  { title: "Only Yesterday" },
+  { title: "Porco Rosso" },
+  { title: "Ocean Waves" },
+  { title: "Pom Poko" },
+  { title: "Whisper of the Heart" },
+  { title: "Princess Mononoke" },
+  { title: "My Neighbors the Yamadas" },
+  { title: "Spirited Away" },
+  { title: "The Cat Returns" },
+  { title: "Howl's Moving Castle" },
+  { title: "Tales from Earthsea" },
+  { title: "Ponyo" },
+  { title: "The Secret World of Arrietty" },
+  { title: "From Up on Poppy Hill" },
+  { title: "The Wind Rises" },
+  { title: "The Tale of the Princess Kaguya" },
+  { title: "When Marnie Was There" },
+  { title: "Earwig and the Witch" }
 ];
 
 export const TOP_RATED_GHIBLI = [
@@ -56,3 +47,40 @@ export const TOP_RATED_GHIBLI = [
   { title: 'My Neighbor Totoro' },
   { title: 'Castle in the Sky' }
 ];
+
+export const Fantasy_Epics = [
+  { title: 'Nausicaä of the Valley of the Wind' },
+  { title: 'Castle in the Sky' },
+  { title: 'Princess Mononoke' },
+  { title: "Spirited Away" },
+  { title: 'Tales from Earthsea' },
+  { title: 'Earwig and the Witch' }
+];
+
+export const Slice_of_Life = [
+  { title: 'Only Yesterday' },
+  { title: 'Whisper of the Heart' },
+  { title: 'From Up on Poppy Hill' },
+  { title: "Kiki's Delivery Service" },
+  { title: 'When Marnie Was There' },
+  { title: 'Porco Rosso' },
+  { title: 'Ocean Waves' }
+];
+
+export const war_history = [
+  { title: 'Grave of the Fireflies' },
+  { title: 'The Wind Rises' },
+  { title: 'Pom Poko' },
+  { title: "The Tale of the Princess Kaguya" }
+];
+
+export const cozy_family = [
+  { title: 'My Neighbor Totoro' },
+  { title: 'Ponyo' },
+  { title: 'The Secret World of Arrietty' },
+  { title: "The Cat Returns" },
+  { title: "My Neighbors the Yamadas" }
+];
+
+
+

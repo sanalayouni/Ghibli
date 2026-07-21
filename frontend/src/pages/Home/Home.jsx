@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import TitleCards from '../../components/TitleCards/TitleCards'
 import Footer from '../../components/Footer/Footer'
 import FeaturedMovie from '../../components/FeaturedMovie/FeaturedMovie'
-import { POPULAR_GHIBLI, CLASSIC_GHIBLI, KIDS_GHIBLI, FEATURED_GHIBLI } from '../../constants/movies'
+import {FEATURED_GHIBLI,Fantasy_Epics,cozy_family,war_history,Slice_of_Life,TOP_RATED_GHIBLI } from '../../constants/movies'
 import Thanks from '../../components/thanks/thanks'
 import Welcome from '../../components/Welcome/Welcome'
 
@@ -18,21 +18,21 @@ const Home = () => {
           <FeaturedMovie key={movie.id} movie={movie} />
         ))}
       </div>
-      
+      <div className="thanks-section">
       <Thanks/>
-
-      <Welcome />
-
-      
-
-      <div className="home-content">
-        <TitleCards />
-        <div className="More movies">
-          <TitleCards title="Popular on Ghibli Mori" movieList={POPULAR_GHIBLI} />
-          <TitleCards title="Ghibli Classics" movieList={CLASSIC_GHIBLI} />
-          <TitleCards title="For Kids" movieList={KIDS_GHIBLI} />
-        </div>
       </div>
+      
+      <div className="welcome-section">
+      <Welcome />
+      </div>
+    
+        <div className="More movies">
+          <TitleCards title="Top Rated" movieList={TOP_RATED_GHIBLI} />
+          <TitleCards title="Slice of Life" movieList={Slice_of_Life} />
+          <TitleCards title="Fantasy Epics" movieList={Fantasy_Epics} />
+          <TitleCards title="Cozy Family " movieList={cozy_family} />
+          <TitleCards title="War History" movieList={war_history} />
+        </div>
 
       <div className="Footer">
         <Footer />
