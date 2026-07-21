@@ -2,6 +2,7 @@ import React from "react";
 import "./Welcome.css";
 import hero from '../../assets/back.jpg'
 
+
 export default function Welcome() {
   return (
     <section className="welcome-section">
