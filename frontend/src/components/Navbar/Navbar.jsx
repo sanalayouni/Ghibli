@@ -38,6 +38,7 @@ const Navbar = () => {
         <NavLink to="/movies" className="hover:text-gray-300 font-medium">Movies</NavLink>
         <NavLink to="/top-rated" className="hover:text-gray-300 font-medium">Top Rated</NavLink>
         <NavLink to="/guess" className="hover:text-gray-300 font-medium">Guess</NavLink>
+        <NavLink to="/ost" className="hover:text-gray-300 font-medium">OST</NavLink>
       </div>
 
       {/* Search & Profile */}
