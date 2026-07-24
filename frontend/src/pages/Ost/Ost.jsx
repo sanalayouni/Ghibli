@@ -4,6 +4,7 @@ import Footer from '../../components/Footer/Footer'
 import { GHIBLI_OST } from '../../constants/ost'
 import { FaHeart, FaPause, FaPlay, FaRandom, FaRegHeart, FaStepBackward, FaStepForward } from 'react-icons/fa'
 import './Ost.css'
+import MagicCursor from "../../components/MagicCursor";
 
 const formatTime = seconds => {
   if (!seconds || Number.isNaN(seconds)) return '0:00'
@@ -190,7 +191,7 @@ const Ost = () => {
   return (
     <div className="ost-page">
       <Navbar />
-
+      <MagicCursor mode="dust" />
       <div className="ost-hero">
         <p className="ost-eyebrow">Studio Ghibli</p>
         <h1 className="ost-title">Soundtracks</h1>

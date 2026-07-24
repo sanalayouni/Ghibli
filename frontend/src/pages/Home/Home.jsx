@@ -7,6 +7,7 @@ import FeaturedMovie from '../../components/FeaturedMovie/FeaturedMovie'
 import {FEATURED_GHIBLI,Fantasy_Epics,cozy_family,war_history,Slice_of_Life,TOP_RATED_GHIBLI } from '../../constants/movies'
 import Thanks from '../../components/thanks/thanks'
 import Welcome from '../../components/Welcome/Welcome'
+import MagicCursor from "../../components/MagicCursor";
 
 const Home = () => {
   return (
@@ -25,7 +26,7 @@ const Home = () => {
       <div className="welcome-section">
       <Welcome />
       </div>
-    
+      <MagicCursor />
         <div className="More movies">
           <TitleCards title="Top Rated" movieList={TOP_RATED_GHIBLI} />
           <TitleCards title="Slice of Life" movieList={Slice_of_Life} />

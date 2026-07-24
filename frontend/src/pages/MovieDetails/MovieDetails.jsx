@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import './MovieDetails.css'
 import Navbar from '../../components/Navbar/Navbar'
 import Comments from '../../components/Comments/Comments'
+import MagicCursor from "../../components/MagicCursor";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 const BASE_IMG = 'https://image.tmdb.org/t/p/original'
@@ -92,7 +93,7 @@ const MovieDetails = () => {
           backgroundImage: `url(${BASE_IMG}${movie.backdrop_path})`
         }}
       />
-
+      <MagicCursor mode="stars" />
       <div className="movie-content">
         <div className="movie-header">
           <h1>{movie.title}</h1>

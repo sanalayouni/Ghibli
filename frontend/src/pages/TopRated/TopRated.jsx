@@ -4,11 +4,13 @@ import Navbar from '../../components/Navbar/Navbar'
 import TitleCards from '../../components/TitleCards/TitleCards'
 import Footer from '../../components/Footer/Footer'
 import { TOP_RATED_GHIBLI } from '../../constants/movies'
+import MagicCursor from "../../components/MagicCursor";
 
 const TopRated = () => {
   return (
     <div className="movies-page">
       <Navbar />
+      <MagicCursor mode="stars" />
       <div className="movies-container">
         <TitleCards title="Top Rated Ghibli Movies" movieList={TOP_RATED_GHIBLI} />
       </div>
