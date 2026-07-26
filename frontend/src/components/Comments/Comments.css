@@ -34,8 +34,33 @@
   margin-bottom: 4rem;
 }
 
+.comment-form-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.comment-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+.comment-avatar--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(115, 26, 26);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
 .comment-form textarea {
-  width: 100%;
+  flex: 1;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
@@ -101,10 +126,15 @@
 
 .comment-header {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 12px;
+}
+
+.comment-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .comment-author {

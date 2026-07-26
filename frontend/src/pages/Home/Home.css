@@ -23,6 +23,15 @@
   background: #050505;
 }
 
+.more-movies {
+  background: #050505;
+  padding-bottom: 1rem;
+}
+
+.thanks-section {
+  background: #050505;
+}
+
 .welcome-card {
   position: relative;
   min-height: 320px;

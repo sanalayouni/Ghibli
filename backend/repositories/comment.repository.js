@@ -6,7 +6,7 @@ exports.create = async (data) => {
 
 exports.findByMovieId = async (movieId) => {
   return await Comment.find({ movieId })
-    .populate("user", "username") // only return username
+    .populate("user", "username profilePicture")
     .sort({ createdAt: -1 });
 };
 

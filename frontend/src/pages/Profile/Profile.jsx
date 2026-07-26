@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
+import { GHIBLI_OST } from '../../constants/ost'
 import './Profile.css'
 
 const IMG_BASE = 'https://image.tmdb.org/t/p/w500'
@@ -10,8 +11,8 @@ const Profile = () => {
   const [loading, setLoading] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
   const [favorites, setFavorites] = useState([])
+  const [likedSongs, setLikedSongs] = useState([])
 
-  // Edit form state
   const [editForm, setEditForm] = useState({
     username: '',
     bio: '',
@@ -20,6 +21,11 @@ const Profile = () => {
   const fileInputRef = useRef(null)
 
   const navigate = useNavigate()
+
+  const loadLikedSongs = () => {
+    const likedIds = JSON.parse(localStorage.getItem('ghibli-ost-likes') || '[]')
+    setLikedSongs(GHIBLI_OST.filter(track => likedIds.includes(track.id)))
+  }
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -32,7 +38,7 @@ const Profile = () => {
       try {
         const res = await fetch('http://localhost:3000/users/profile', {
           headers: {
-            'Authorization': `Bearer ${token}`
+            Authorization: `Bearer ${token}`
           }
         })
         if (res.ok) {
@@ -43,9 +49,10 @@ const Profile = () => {
             bio: data.user.bio || '',
             profilePicture: data.user.profilePicture || ''
           })
+          localStorage.setItem('profilePicture', data.user.profilePicture || '')
         }
       } catch (err) {
-        console.error("Failed to fetch profile", err)
+        console.error('Failed to fetch profile', err)
       } finally {
         setLoading(false)
       }
@@ -53,13 +60,18 @@ const Profile = () => {
 
     fetchProfile()
 
-    // Load favorites from local storage
     const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]')
     setFavorites(storedFavorites)
+    loadLikedSongs()
+
+    window.addEventListener('storage', loadLikedSongs)
+    return () => window.removeEventListener('storage', loadLikedSongs)
   }, [])
 
   const handleLogout = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('profilePicture')
+    window.dispatchEvent(new Event('profileUpdated'))
     navigate('/')
   }
 
@@ -68,7 +80,7 @@ const Profile = () => {
     if (file) {
       const reader = new FileReader()
       reader.onloadend = () => {
-        setEditForm({ ...editForm, profilePicture: reader.result })
+        setEditForm(prev => ({ ...prev, profilePicture: reader.result }))
       }
       reader.readAsDataURL(file)
     }
@@ -84,21 +96,23 @@ const Profile = () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(editForm)
       })
 
       if (res.ok) {
         const data = await res.json()
-        setProfile({ ...profile, ...data.user }) // Assuming backend returns updated fields
+        setProfile(prev => ({ ...prev, ...data.user }))
+        localStorage.setItem('profilePicture', data.user.profilePicture || '')
+        window.dispatchEvent(new Event('profileUpdated'))
         setIsEditing(false)
       } else {
-        alert("Failed to update profile")
+        alert('Failed to update profile')
       }
     } catch (err) {
       console.error(err)
-      alert("Error updating profile")
+      alert('Error updating profile')
     }
   }
 
@@ -108,20 +122,24 @@ const Profile = () => {
     localStorage.setItem('favorites', JSON.stringify(updated))
   }
 
+  const removeLikedSong = (id) => {
+    const likedIds = JSON.parse(localStorage.getItem('ghibli-ost-likes') || '[]')
+    const updated = likedIds.filter(songId => songId !== id)
+    localStorage.setItem('ghibli-ost-likes', JSON.stringify(updated))
+    setLikedSongs(prev => prev.filter(song => song.id !== id))
+  }
+
   return (
     <>
       <Navbar />
       <div className="profile-page">
         <div className="profile-layout">
-
-          {/* Main Profile Card */}
           <div className="profile-container">
             <h2>Your Profile</h2>
 
             {loading ? (
               <div className="profile-loading">Loading profile...</div>
             ) : profile ? (
-
               isEditing ? (
                 <form className="profile-edit-form" onSubmit={handleSaveProfile}>
                   <div className="avatar-upload" onClick={() => fileInputRef.current.click()}>
@@ -180,8 +198,6 @@ const Profile = () => {
                   <h3 className="profile-username">{profile.username}</h3>
                   <p className="profile-email">{profile.email}</p>
 
-
-
                   {profile.bio && (
                     <div className="profile-bio">
                       <p>{profile.bio}</p>
@@ -202,30 +218,52 @@ const Profile = () => {
             )}
           </div>
 
-          {/* Favorites Section */}
           {profile && !isEditing && (
-            <div className="favorites-container">
-              <h2>My Favorite Movies</h2>
-              {favorites.length === 0 ? (
-                <p className="no-favorites">You haven't added any movies to your favorites yet.</p>
-              ) : (
-                <div className="favorites-grid">
-                  {favorites.map(movie => (
-                    <div key={movie.id} className="favorite-card">
-                      <Link to={`/movie/${movie.id}`}>
-                        <img src={movie.poster_path ? `${IMG_BASE}${movie.poster_path}` : 'https://via.placeholder.com/500x750?text=No+Poster'} alt={movie.title} />
-                      </Link>
-                      <div className="favorite-card-info">
-                        <h4>{movie.title}</h4>
-                        <button className="remove-fav-btn" onClick={() => removeFavorite(movie.id)}>Remove</button>
+            <>
+              <div className="favorites-container">
+                <h2>My Favorite Movies</h2>
+                {favorites.length === 0 ? (
+                  <p className="no-favorites">You haven&apos;t added any movies to your favorites yet.</p>
+                ) : (
+                  <div className="favorites-grid">
+                    {favorites.map(movie => (
+                      <div key={movie.id} className="favorite-card">
+                        <Link to={`/movie/${movie.id}`}>
+                          <img src={movie.poster_path ? `${IMG_BASE}${movie.poster_path}` : 'https://via.placeholder.com/500x750?text=No+Poster'} alt={movie.title} />
+                        </Link>
+                        <div className="favorite-card-info">
+                          <h4>{movie.title}</h4>
+                          <button className="remove-fav-btn" onClick={() => removeFavorite(movie.id)}>Remove</button>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+                    ))}
+                  </div>
+                )}
+              </div>
 
+              <div className="favorites-container favorite-songs-container">
+                <h2>My Favorite Songs</h2>
+                {likedSongs.length === 0 ? (
+                  <p className="no-favorites">
+                    No favorite songs yet. Visit the <Link to="/ost">OST page</Link> and tap the heart on tracks you love.
+                  </p>
+                ) : (
+                  <ul className="favorite-songs-list">
+                    {likedSongs.map(song => (
+                      <li key={song.id} className="favorite-song-item">
+                        <img src={song.cover} alt={song.title} className="favorite-song-cover" />
+                        <div className="favorite-song-info">
+                          <span className="favorite-song-title">{song.title}</span>
+                          <span className="favorite-song-movie">{song.movie}</span>
+                        </div>
+                        <button className="remove-fav-btn" onClick={() => removeLikedSong(song.id)}>Remove</button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

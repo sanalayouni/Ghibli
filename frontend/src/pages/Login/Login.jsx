@@ -65,8 +65,16 @@ const Login = () => {
         
         // Save the token to localStorage
         if (data.token) {
-          localStorage.setItem("token", data.token);
+          localStorage.setItem('token', data.token)
         }
+
+        if (data.user?.profilePicture) {
+          localStorage.setItem('profilePicture', data.user.profilePicture)
+        } else {
+          localStorage.removeItem('profilePicture')
+        }
+
+        window.dispatchEvent(new Event('profileUpdated'))
         
         // Redirect to home page
         navigate("/home");

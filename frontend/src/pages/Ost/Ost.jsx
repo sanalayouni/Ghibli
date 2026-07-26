@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import { GHIBLI_OST } from '../../constants/ost'
@@ -14,7 +15,13 @@ const formatTime = seconds => {
 }
 
 const Ost = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const location = useLocation()
+  const initialTrackId = location.state?.trackId
+  const initialIndex = initialTrackId
+    ? Math.max(0, GHIBLI_OST.findIndex(track => track.id === initialTrackId))
+    : 0
+
+  const [currentIndex, setCurrentIndex] = useState(initialIndex)
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -36,6 +43,12 @@ const Ost = () => {
   const currentIndexRef = useRef(0)
 
   const currentTrack = GHIBLI_OST[currentIndex]
+
+  useEffect(() => {
+    if (!location.state?.trackId) return
+    const index = GHIBLI_OST.findIndex(track => track.id === location.state.trackId)
+    if (index >= 0) setCurrentIndex(index)
+  }, [location.state])
 
   isPlayingRef.current = isPlaying
   shuffleRef.current = shuffle

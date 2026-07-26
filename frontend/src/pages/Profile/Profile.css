@@ -353,6 +353,63 @@ button {
   color: rgb(115, 26, 26);
 }
 
+.favorite-songs-container .no-favorites a {
+  color: rgb(160, 50, 50);
+  text-decoration: underline;
+}
+
+.favorite-songs-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.favorite-song-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.3s ease;
+}
+
+.favorite-song-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.favorite-song-cover {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.favorite-song-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.favorite-song-title {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.favorite-song-movie {
+  color: #888;
+  font-size: 0.8rem;
+}
+
 @media (max-width: 768px) {
   .profile-actions, .form-actions {
     flex-direction: column;
