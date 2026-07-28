@@ -59,7 +59,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="footer-copy">&copy; {new Date().getFullYear()} Ghibli Mori. For educational and personal use.</p>
+      <p className="footer-copy">&copy; {new Date().getFullYear()} Ghibli Mori. For educational and personal use.Designed & Developed by Sana Layouni</p>
     </footer>
   )
 }
